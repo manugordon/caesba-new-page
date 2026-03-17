@@ -974,7 +974,7 @@ button {
   display: flex;
   gap: var(--sp-3);
   width: max-content;
-  animation: marquee-scroll 35s linear infinite;
+  animation: marquee-scroll 80s linear infinite;
 }
 
 @keyframes marquee-scroll {
@@ -985,22 +985,14 @@ button {
 .member-chip {
   display: flex;
   align-items: center;
-  gap: var(--sp-2);
-  padding: var(--sp-2) var(--sp-5);
-  border-radius: var(--r-full);
-  background: rgba(86, 142, 179, 0.06);
-  border: 1px solid var(--c-border);
-  color: var(--c-text-strong);
-  font-size: 0.85rem;
-  font-weight: 500;
-  white-space: nowrap;
   flex-shrink: 0;
+  padding: 0 var(--sp-5);
 }
 
 .member-chip img {
-  height: 22px;
+  height: 40px;
   width: auto;
-  max-width: 80px;
+  max-width: 140px;
   object-fit: contain;
   opacity: 0.75;
   transition: opacity var(--transition);
@@ -1597,8 +1589,6 @@ textarea.form-control {
 /* Footer */
 [data-theme="dark"] .site-footer             { background: #021524; }
 
-/* Member chips */
-[data-theme="dark"] .member-chip             { background: rgba(86, 142, 179, 0.1); border-color: var(--c-border); color: var(--c-text); }
 
 
 /* ============================================================

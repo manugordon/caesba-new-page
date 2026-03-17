@@ -1,9 +1,9 @@
-const MEMBERS = [
-  'Argentina', 'Brasil', 'Chile', 'Uruguay', 'Paraguay', 'Bolivia',
-  'Perú', 'Colombia', 'Venezuela', 'Ecuador', 'México', 'Guatemala',
-  'Cuba', 'Honduras', 'El Salvador', 'Nicaragua', 'Costa Rica',
-  'Panamá', 'España', 'Portugal',
-];
+import Image from 'next/image';
+
+const MEMBERS: { name: string; file: string }[] = Array.from({ length: 60 }, (_, i) => ({
+  name: `Cliente ${i + 1}`,
+  file: `logo_cliente_${i + 1}.png`,
+}));
 
 export default function Miembros() {
   return (
@@ -47,18 +47,35 @@ export default function Miembros() {
         </div>
 
         {/* Marquee infinito */}
-        <div className="members-marquee" aria-label="Empresas miembro CAESBA">
-          <div className="members-track">
-            {/* Bloque original */}
-            {MEMBERS.map((name) => (
-              <div className="member-chip" key={name}>{name}</div>
-            ))}
-            {/* Bloque duplicado para loop seamless */}
-            {MEMBERS.map((name) => (
-              <div className="member-chip" aria-hidden="true" key={`dup-${name}`}>{name}</div>
-            ))}
+        {MEMBERS.length > 0 && (
+          <div className="members-marquee" aria-label="Empresas miembro CAESBA">
+            <div className="members-track">
+              {MEMBERS.map((m) => (
+                <div className="member-chip" key={m.name}>
+                  <Image
+                    src={`/assets/members/${m.file}`}
+                    alt={m.name}
+                    width={120}
+                    height={40}
+                    style={{ objectFit: 'contain', width: 'auto', height: '100%' }}
+                  />
+                </div>
+              ))}
+              {/* Bloque duplicado para loop seamless */}
+              {MEMBERS.map((m) => (
+                <div className="member-chip" aria-hidden="true" key={`dup-${m.name}`}>
+                  <Image
+                    src={`/assets/members/${m.file}`}
+                    alt=""
+                    width={120}
+                    height={40}
+                    style={{ objectFit: 'contain', width: 'auto', height: '100%' }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
